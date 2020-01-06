@@ -3,6 +3,6 @@ import Index from './index';
 
 export default () => {
   return (
-    <Index name="hello word" />
+    <Index name='hello word' />
   )
 }
