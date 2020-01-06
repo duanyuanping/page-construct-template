@@ -1,6 +1,5 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 
@@ -12,20 +11,6 @@ const commonPlugins = [
         // chunks: [pageName],
         // assetsPrefix: `${assetsPrefix}/`,
         inject: 'false'
-    }),
-
-    new HtmlWebpackExternalsPlugin({
-        externals: [
-            {
-                module: 'react',
-                entry: 'https://11.url.cn/now/lib/16.8.6/react.min.js?_bid=3123',
-                global: 'React'
-            }, {
-                module: 'react-dom',
-                entry: 'https://11.url.cn/now/lib/16.8.6/react-dom.min.js?_bid=3123',
-                global: 'ReactDOM'
-            }
-        ]
     })
 ];
 
