@@ -2,6 +2,7 @@ import React, {
     Component
 } from 'react';
 import ReactDOM from 'react-dom';
+import 'lib-flexible';
 import './reset.css';
 import './main.less';
 import {

@@ -1,5 +1,6 @@
 import React from 'react';
+import './index.less';
 
 export default ({ name }) => {
-  return <div>{name}</div>;
+  return <div className="test-name">{name}</div>;
 }

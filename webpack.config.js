@@ -11,7 +11,7 @@ const plugins = isProduction ? proPlugins : devPlugins;
 module.exports = {
     mode: 'development',
     entry: {
-        main: path.resolve(__dirname, 'main.js')
+        main: path.resolve(__dirname, isProduction ? './src/index.js' : 'main.js')
     },
     output: {
         filename: '[name].js',
@@ -41,7 +41,18 @@ module.exports = {
             },
             {
                 test: /\.(css|less)$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
+                    {
+                        loader:'px2rem-loader',
+                        options: {
+                            remUnit: 75,
+                            remPrecision: 8
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
