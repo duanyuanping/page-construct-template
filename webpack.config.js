@@ -5,7 +5,7 @@ const { devPlugins, proPlugins } = require('./plugins');
 
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
-const outputPath = path.resolve(__dirname, 'dist');
+const outputPath = path.resolve(__dirname, 'lib');
 const plugins = isProduction ? proPlugins : devPlugins;
 
 module.exports = {
@@ -44,14 +44,15 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'less-loader',
                     {
                         loader:'px2rem-loader',
                         options: {
                             remUnit: 75,
                             remPrecision: 8
                         }
-                    }
+                    },
+                    'postcss-loader',
+                    'less-loader',
                 ]
             },
             {
