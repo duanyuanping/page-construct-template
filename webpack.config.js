@@ -9,16 +9,17 @@ const outputPath = path.resolve(__dirname, 'lib');
 const plugins = isProduction ? proPlugins : devPlugins;
 
 module.exports = {
-    mode: 'development',
+    mode: env,
     entry: {
         main: path.resolve(__dirname, isProduction ? './src/index.js' : 'main.js')
     },
     output: {
         filename: '[name].js',
-        path: outputPath
+        path: outputPath,
+        libraryTarget: 'umd',
     },
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
+        contentBase: path.resolve(__dirname, 'lib'),
         setup(app) {
             app.post('*', (req, res) => {
                 res.redirect(req.originalUrl);
@@ -30,7 +31,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                // exclude: /node_modules/,
+                exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
