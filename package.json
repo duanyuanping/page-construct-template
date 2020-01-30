@@ -1,13 +1,14 @@
 {
   "name": "page-construct-template",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "test",
   "main": "bin/index.js",
   "files": [
     "bin"
   ],
   "bin": {
-    "constructor": "bin/index.js"
+    "constructor": "bin/index.js",
+    "con": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
