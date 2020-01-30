@@ -1,13 +1,13 @@
 {
   "name": "page-construct-template",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "test",
   "main": "bin/index.js",
   "files": [
     "bin"
   ],
   "bin": {
-    "constructor": "bin/index.js",
+    "construct": "bin/index.js",
     "con": "bin/index.js"
   },
   "scripts": {

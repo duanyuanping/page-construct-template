@@ -53,11 +53,15 @@ function changeFileName() {
 changeFileName();
 
 // 安装依赖
-shell.echo('开始安装脚手架依赖');
+let npm = 'npm';
+if (shell.which('cnpm')) {
+  npm = 'cnpm';
+}
+shell.echo(`开始安装脚手架依赖，工具：${npm}`);
 if (retry < 3) {
-  shell.exec(`cd ${name} && npm i`);
+  shell.exec(`cd ${name} && ${npm} i`);
 } else {
-  shell.exec(`cd  ${category} && npm i`);
+  shell.exec(`cd ${category} && ${npm} i`);
 }
 shell.echo('脚手架依赖安装成功');
 
