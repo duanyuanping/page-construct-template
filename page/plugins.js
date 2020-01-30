@@ -4,11 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 
 // 通用plugin配置
-const commonPlugins = [];
-
-// 开发环境plugin配置
-const devPlugins = [
-    ...commonPlugins,
+const commonPlugins = [
     new HtmlWebpackPlugin({
         template: path.join(__dirname, './index.html'),
         filename: `index.html`,
@@ -16,6 +12,11 @@ const devPlugins = [
         // assetsPrefix: `${assetsPrefix}/`,
         inject: 'false'
     })
+];
+
+// 开发环境plugin配置
+const devPlugins = [
+    ...commonPlugins
 ];
 
 // 生产环境plugin配置

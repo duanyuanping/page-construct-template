@@ -11,12 +11,11 @@ const plugins = isProduction ? proPlugins : devPlugins;
 module.exports = {
     mode: env,
     entry: {
-        main: path.resolve(__dirname, isProduction ? './src/index.js' : 'main.js')
+        main: path.resolve(__dirname, 'main.js')
     },
     output: {
         filename: '[name].js',
         path: outputPath,
-        libraryTarget: 'umd',
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'lib'),
