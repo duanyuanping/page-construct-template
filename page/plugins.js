@@ -1,6 +1,7 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HappyPack = require('happypack');
 
 // 通用plugin配置
@@ -8,10 +9,15 @@ const commonPlugins = [
     new HtmlWebpackPlugin({
         template: path.join(__dirname, './index.html'),
         filename: `index.html`,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: true
+        },
+        inlineSource: '.(js|css)$',
         // chunks: [pageName],
         // assetsPrefix: `${assetsPrefix}/`,
-        inject: 'false'
-    })
+    }),
+    new HtmlWebpackInlineSourcePlugin()
 ];
 
 // 开发环境plugin配置
