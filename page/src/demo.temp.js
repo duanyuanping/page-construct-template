@@ -3,6 +3,8 @@ import React from 'react';
 
 export default () => {
   return (
-    /** replaceholder: use */
+    <div id="page-wrapper" >
+      {/** replaceholder: use */}
+    </div>
   );
 }
