@@ -21,7 +21,7 @@ export default class extends Component {
      *  ...
      * ]
      */
-    components: [/** replaceholder: use development */]
+    components: [{/** replaceholder: use development */}]
   }
 
   handleDragStart = (e, index) => {
