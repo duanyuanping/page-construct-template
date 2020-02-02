@@ -4,7 +4,8 @@ import React from 'react';
 export default () => {
   return (
     <div id="page-wrapper" >
-      {/** replaceholder: use */}
+      {/** replaceholder: use production */}
+      <AddCom />
     </div>
   );
 }

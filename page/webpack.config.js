@@ -8,11 +8,13 @@ const isProduction = env === 'production';
 const outputPath = path.resolve(__dirname, 'lib');
 const plugins = isProduction ? proPlugins : devPlugins;
 
+const entryConfig = {
+    main: path.resolve(__dirname, 'main.js'),
+};
+
 module.exports = {
     mode: env,
-    entry: {
-        main: path.resolve(__dirname, 'main.js')
-    },
+    entry: entryConfig,
     output: {
         filename: '[name].js',
         path: outputPath,

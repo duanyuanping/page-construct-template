@@ -1,17 +1,8 @@
-// import React from 'react';
-// import Index from './index';
-
-// export default () => {
-//   return (
-//     <Index name='欢迎使用' />
-//   );
-// }
-
 import React, { Component, useState, useRef, useE } from 'react';
 import AddCom from './components/addArea';
 import './demo.less';
 
-import PageConstructBanner from 'page-construct_banner';
+/** replaceholder: import */
 
 const componentName = "component-wrapper";
 
@@ -25,36 +16,12 @@ export default class extends Component {
      *    componentClass: *, 组件函数
      *    componentName: *, 组件名
      *    props: *, 组件调用传参
+     *    key: *, 组件key
      *  },
      *  ...
      * ]
      */
-    components: [
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png"]
-        },
-        key: Math.random()
-      },
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png"]
-        },
-        key: Math.random()
-      },
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg"]
-        },
-        key: Math.random()
-      },
-    ]
+    components: [/** replaceholder: use development */]
   }
 
   handleDragStart = (e, index) => {
