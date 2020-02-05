@@ -103,7 +103,12 @@ function AddCom({ handleChangeComponent }) {
     })
 
     window.addEventListener('message', e => {
-      commonParam.tempPreviewSrc = e.data;
+      if (typeof e.data !== 'string') return;
+
+      const [type, data] = e.data.split(':::');
+      if (type === 'previewImage') {
+        commonParam.tempPreviewSrc = data;
+      }
     })
   }, []);
 

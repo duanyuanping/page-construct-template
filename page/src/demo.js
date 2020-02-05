@@ -36,7 +36,7 @@ export default class extends Component {
         props: {
           list: ["http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png"]
         },
-        key: Math.random()
+        key: Math.random() * Math.random()
       },
       {
         componentClass: PageConstructBanner,
@@ -44,7 +44,7 @@ export default class extends Component {
         props: {
           list: ["http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png"]
         },
-        key: Math.random()
+        key: Math.random() * Math.random()
       },
       {
         componentClass: PageConstructBanner,
@@ -52,9 +52,41 @@ export default class extends Component {
         props: {
           list: ["http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg"]
         },
-        key: Math.random()
+        key: Math.random() * Math.random()
       },
     ]
+  }
+  
+  componentDidMount() {
+    window.addEventListener('message', e => {
+      const { components } = this.state;
+      if (typeof e.data !== 'string') return;
+
+      const [type, data] = e.data.split(':::');
+      if (type === 'componentPropsUpdata') {
+        const [key, values] = data.split(';;;');
+        const newComponents = components.map(item => {
+          if (item.key == key) {
+            let props = JSON.parse(values);
+
+            return {
+              ...item,
+              props,
+              key: Math.random() * Math.random()
+            };
+          } else {
+            return {
+              ...item,
+              key: Math.random() * Math.random()
+            };
+          }
+        });
+
+        this.setState({
+          components: newComponents
+        });
+      }
+    })
   }
 
   handleDragStart = (e, index) => {
@@ -98,16 +130,20 @@ export default class extends Component {
     });
   }
 
-  render() {
-    const { currentIndex } = this.state;
+  handleComponentClick = (name, key, props) => {
+    window.parent.window.postMessage(`componentClick:::${name};;;${key};;;${JSON.stringify(props)}`);
+  }
 
+  render() {
+    const { currentIndex, components } = this.state;
+    console.log(components)
     return (
       <div
         id="page-wrapper"
         ref={this.pageWrapper}
       >
         {
-          this.state.components.map((item, index) => {
+          components.map && components.map((item, index) => {
             if (currentIndex !== index) {
               return (
                 <div
@@ -116,6 +152,7 @@ export default class extends Component {
                   className="component-wrapper"
                   draggable={true}
                   onDragStart={e => this.handleDragStart(e, index)}
+                  onClick={() => this.handleComponentClick(item.componentName, item.key, item.props)}
                 >
                   <item.componentClass {...item.props} />
                 </div>

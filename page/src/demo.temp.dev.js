@@ -24,6 +24,38 @@ export default class extends Component {
     components: [{/** replaceholder: use development */}]
   }
 
+  componentDidMount() {
+    window.addEventListener('message', e => {
+      const { components } = this.state;
+      if (typeof e.data !== 'string') return;
+
+      const [type, data] = e.data.split(':::');
+      if (type === 'componentPropsUpdata') {
+        const [key, values] = data.split(';;;');
+        const newComponents = components.map(item => {
+          if (item.key == key) {
+            let props = JSON.parse(values);
+
+            return {
+              ...item,
+              props,
+              key: Math.random() * Math.random()
+            };
+          } else {
+            return {
+              ...item,
+              key: Math.random() * Math.random()
+            };
+          }
+        });
+
+        this.setState({
+          components: newComponents
+        });
+      }
+    })
+  }
+
   handleDragStart = (e, index) => {
     const componentDoms = Array.prototype.filter.call(
       this.pageWrapper.current.childNodes,
@@ -65,16 +97,20 @@ export default class extends Component {
     });
   }
 
-  render() {
-    const { currentIndex } = this.state;
+  handleComponentClick = (name, key, props) => {
+    window.parent.window.postMessage(`componentClick:::${name};;;${key};;;${JSON.stringify(props)}`);
+  }
 
+  render() {
+    const { currentIndex, components } = this.state;
+    console.log(components)
     return (
       <div
         id="page-wrapper"
         ref={this.pageWrapper}
       >
         {
-          this.state.components.map((item, index) => {
+          components.map && components.map((item, index) => {
             if (currentIndex !== index) {
               return (
                 <div
@@ -83,6 +119,7 @@ export default class extends Component {
                   className="component-wrapper"
                   draggable={true}
                   onDragStart={e => this.handleDragStart(e, index)}
+                  onClick={() => this.handleComponentClick(item.componentName, item.key, item.props)}
                 >
                   <item.componentClass {...item.props} />
                 </div>
