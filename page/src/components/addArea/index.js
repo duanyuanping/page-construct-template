@@ -8,7 +8,7 @@ const getStyle = (dom, attr) => {
 }
 
 // 添加区域组件内容
-function AddCom({ handleChangeComponent }) {
+function AddCom({ handleChangeComponent, handleConstruct }) {
   const addDom = useRef(null);
   const [display, setDisplay] = useState('none');
   const commonParam = {
@@ -96,7 +96,8 @@ function AddCom({ handleChangeComponent }) {
       newDom.src = commonParam.previewSrc;
       newDom.style.width = '100%';
       pageWrapper.insertBefore(newDom, nextDom);
-      window.parent.window.postMessage('construct');
+      // 构建后端存放的页面代码
+      handleConstruct(commonParam.nextComponentIndex);
 
       commonParam.previewSrc = '';
       commonParam.tempPreviewSrc = '';

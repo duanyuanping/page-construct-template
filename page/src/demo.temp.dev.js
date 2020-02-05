@@ -101,9 +101,20 @@ export default class extends Component {
     window.parent.window.postMessage(`componentClick:::${name};;;${key};;;${JSON.stringify(props)}`);
   }
 
+  handleConstruct = nextIndex => {
+    const { components } = this.state;
+
+    const infoMap = components.map(item => ({
+      name: item.componentName,
+      props: item.props
+    }));
+
+    window.parent.window.postMessage(`pageConstruct:::${JSON.stringify(infoMap)};;;${nextIndex}`);
+  }
+
   render() {
     const { currentIndex, components } = this.state;
-    console.log(components)
+
     return (
       <div
         id="page-wrapper"
@@ -130,6 +141,7 @@ export default class extends Component {
           })
         }
         <AddCom
+          handleConstruct={this.handleConstruct}
           handleChangeComponent={this.handleChangeComponent}
         />
       </div>
