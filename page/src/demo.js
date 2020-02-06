@@ -59,34 +59,58 @@ export default class extends Component {
   
   componentDidMount() {
     window.addEventListener('message', e => {
-      const { components } = this.state;
       if (typeof e.data !== 'string') return;
 
       const [type, data] = e.data.split(':::');
-      if (type === 'componentPropsUpdata') {
-        const [key, values] = data.split(';;;');
-        const newComponents = components.map(item => {
-          if (item.key == key) {
-            let props = JSON.parse(values);
 
-            return {
-              ...item,
-              props,
-              key: Math.random() * Math.random()
-            };
-          } else {
-            return {
-              ...item,
-              key: Math.random() * Math.random()
-            };
-          }
-        });
-
-        this.setState({
-          components: newComponents
-        });
+      switch(type) {
+        case 'componentPropsUpdata':
+          this.handleUpdateComponents(data);
+          break;
+        case 'sendComponents':
+          this.handleSendComponentsConfig();
+          break;
+        default:
+          break;
       }
     })
+  }
+
+  handleUpdateComponents = data => {
+    const { components } = this.state;
+    const [key, values] = data.split(';;;');
+    const newComponents = components.map(item => {
+      if (item.key == key) {
+        let props = JSON.parse(values);
+
+        return {
+          ...item,
+          props,
+          key: Math.random() * Math.random()
+        };
+      } else {
+        return {
+          ...item,
+          key: Math.random() * Math.random()
+        };
+      }
+    });
+
+    this.setState({
+      components: newComponents
+    });
+  }
+
+  handleSendComponentsConfig = () => {
+    const { components } = this.state;
+
+    const infoMap = components.map(item => ({
+      name: item.componentName,
+      props: item.props,
+      key: item.key
+    }));
+
+    window.parent.window.postMessage(`pageComponentConfigUpdate:::${JSON.stringify(infoMap)}`);
   }
 
   handleDragStart = (e, index) => {
@@ -127,6 +151,8 @@ export default class extends Component {
     this.setState({
       components: newComponents,
       currentIndex: -1
+    }, () => {
+      this.handleSendComponentsConfig();
     });
   }
 
