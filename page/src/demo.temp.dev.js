@@ -52,13 +52,11 @@ export default class extends Component {
 
         return {
           ...item,
-          props,
-          key: Math.random() * Math.random()
+          props
         };
       } else {
         return {
-          ...item,
-          key: Math.random() * Math.random()
+          ...item
         };
       }
     });
