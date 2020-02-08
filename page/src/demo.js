@@ -11,7 +11,7 @@ import React, { Component, useState, useRef, useE } from 'react';
 import AddCom from './components/addArea';
 import './demo.less';
 
-import PageConstructBanner from 'page-construct_banner';
+// import PageConstructBanner from 'page-construct_banner';
 
 const componentName = "component-wrapper";
 
@@ -30,30 +30,30 @@ export default class extends Component {
      * ]
      */
     components: [
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png"]
-        },
-        key: Math.random() * Math.random()
-      },
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png"]
-        },
-        key: Math.random() * Math.random()
-      },
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg"]
-        },
-        key: Math.random() * Math.random()
-      },
+      // {
+      //   componentClass: PageConstructBanner,
+      //   componentName: 'page-construct_banner',
+      //   props: {
+      //     list: ["http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png","http://q4wpci6vb.sabkt.gdipper.com/66.png"]
+      //   },
+      //   key: Math.random() * Math.random()
+      // },
+      // {
+      //   componentClass: PageConstructBanner,
+      //   componentName: 'page-construct_banner',
+      //   props: {
+      //     list: ["http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png"]
+      //   },
+      //   key: Math.random() * Math.random()
+      // },
+      // {
+      //   componentClass: PageConstructBanner,
+      //   componentName: 'page-construct_banner',
+      //   props: {
+      //     list: ["http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg","http://q4wpci6vb.sabkt.gdipper.com/d1.jpg"]
+      //   },
+      //   key: Math.random() * Math.random()
+      // },
     ]
   }
   
