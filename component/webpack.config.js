@@ -8,6 +8,26 @@ const isProduction = env === 'production';
 const outputPath = path.resolve(__dirname, 'lib');
 const plugins = isProduction ? proPlugins : devPlugins;
 
+/**
+ * 线上组件调用时存在多个react版本，导致321错误，组件发布的时候react不打包到buddle，被调用的时候直接使用宿主的react环境
+ * 本地引用react组件，宿主环境需要打包react
+ */
+const proExternals = {
+    react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+    },
+    'react-dom': {
+        root: 'ReactDOM',
+        commonjs2: 'react-dom',
+        commonjs: 'react-dom',
+        amd: 'react-dom'
+    }
+};
+const externals = isProduction ? proExternals : {};
+
 module.exports = {
     mode: env,
     entry: {
@@ -18,6 +38,7 @@ module.exports = {
         path: outputPath,
         libraryTarget: 'umd',
     },
+    externals: externals,
     devServer: {
         contentBase: path.resolve(__dirname, 'lib'),
         setup(app) {
@@ -57,7 +78,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|jpeg|gif)$/,
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
                 loader: 'url-loader',
             },
             {
