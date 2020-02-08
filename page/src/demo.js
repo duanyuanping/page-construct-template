@@ -2,8 +2,8 @@ import React, { Component, useState, useRef, useE } from 'react';
 import AddCom from './components/addArea';
 import './demo.less';
 
-import PageConstructBanner from 'page-construct_banner';
-import ConstructComponentInfocard from 'construct-component-infocard';
+// import PageConstructBanner from 'page-construct_banner';
+// import ConstructComponentInfocard from 'construct-component-infocard';
 
 const componentName = "component-wrapper";
 
@@ -22,20 +22,20 @@ export default class extends Component {
      * ]
      */
     components: [
-      {
-        componentClass: ConstructComponentInfocard,
-        componentName: 'construct-component-infocard',
-        props: {"cover":"http://q4wpci6vb.sabkt.gdipper.com/tuhaokuai_1581170927.png","title":"信息卡片title","avatar":"http://pic.url.cn/hy_personal/33febdb83d891b3228a882f40ce341550f94a83e4130e13b3f435b7d0a5548e1/80?tp=webp","anchor":"主播名","fans":10000},
-        key: Math.random()
-      },
-      {
-        componentClass: PageConstructBanner,
-        componentName: 'page-construct_banner',
-        props: {
-          list: ["http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png","http://q4wpci6vb.sabkt.gdipper.com/3.png"]
-        },
-        key: Math.random() * Math.random()
-      }
+      // {
+      //   componentClass: ConstructComponentInfocard,
+      //   componentName: 'construct-component-infocard',
+      //   props: {"cover":"http://q4wpci6vb.sabkt.gdipper.com/tuhaokuai_1581170927.png","title":"信息卡片title","avatar":"http://pic.url.cn/hy_personal/33febdb83d891b3228a882f40ce341550f94a83e4130e13b3f435b7d0a5548e1/80?tp=webp","anchor":"主播名","fans":10000},
+      //   key: Math.random()
+      // },
+      // {
+      //   componentClass: PageConstructBanner,
+      //   componentName: 'page-construct_banner',
+      //   props: {
+      //     list: ["http://q4wpci6vb.sabkt.gdipper.com/tuhaokuai_1581170927.png","http://q4wpci6vb.sabkt.gdipper.com/tuhaokuai_1581170927.png","http://q4wpci6vb.sabkt.gdipper.com/tuhaokuai_1581170927.png"]
+      //   },
+      //   key: Math.random() * Math.random()
+      // }
     ]
   }
   
