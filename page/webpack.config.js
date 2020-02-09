@@ -1,11 +1,13 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
+const minimist = require('minimist');
 const { devPlugins, proPlugins } = require('./plugins');
 
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
-const outputPath = path.resolve(__dirname, isProduction ? 'pro' : 'dev');
+const buildName = minimist(process.argv.slice(2)).e;
+const outputPath = path.resolve(__dirname, buildName);
 const plugins = isProduction ? proPlugins : devPlugins;
 
 const entryConfig = {

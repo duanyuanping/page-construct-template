@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack",
+    "build:pro": "cross-env NODE_ENV=production webpack -e pro",
+    "build:dev": "cross-env NODE_ENV=production webpack -e dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open",
     "pub": "npm run build && npm publish"
   },
@@ -53,5 +54,7 @@
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }
