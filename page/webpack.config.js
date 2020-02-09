@@ -6,7 +6,7 @@ const { devPlugins, proPlugins } = require('./plugins');
 
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
-const buildName = minimist(process.argv.slice(2)).e;
+const buildName = isProduction ? minimist(process.argv.slice(2)).e : 'dev';
 const outputPath = path.resolve(__dirname, buildName);
 const plugins = isProduction ? proPlugins : devPlugins;
 
