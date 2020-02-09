@@ -5,7 +5,7 @@ const { devPlugins, proPlugins } = require('./plugins');
 
 const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
-const outputPath = path.resolve(__dirname, 'lib');
+const outputPath = path.resolve(__dirname, isProduction ? 'pro' : 'dev');
 const plugins = isProduction ? proPlugins : devPlugins;
 
 const entryConfig = {
@@ -20,7 +20,7 @@ module.exports = {
         path: outputPath,
     },
     devServer: {
-        contentBase: path.resolve(__dirname, 'lib'),
+        contentBase: path.resolve(__dirname, 'dev'),
         setup(app) {
             app.post('*', (req, res) => {
                 res.redirect(req.originalUrl);
