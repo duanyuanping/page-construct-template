@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-decorators": "^7.4.4",
@@ -52,9 +53,7 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^3.4.1",
     "minimist": "^1.2.0"
   }
 }
