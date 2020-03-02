@@ -1,5 +1,6 @@
 const path = require('path');
 const minimist = require('minimist');
+const TerserPlugin = require('terser-webpack-plugin');
 const { devPlugins, proPlugins } = require('./plugins');
 
 const env = process.env.NODE_ENV;
