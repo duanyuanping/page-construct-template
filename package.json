@@ -1,6 +1,6 @@
 {
   "name": "page-construct-template",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "test",
   "main": "bin/index.js",
   "files": [

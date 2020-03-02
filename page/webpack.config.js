@@ -1,6 +1,5 @@
 const path = require('path');
 const minimist = require('minimist');
-const TerserPlugin = require('terser-webpack-plugin');
 const { devPlugins, proPlugins } = require('./plugins');
 
 const env = process.env.NODE_ENV;
@@ -43,16 +42,13 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: [
-                    'thread-loader',
-                    {
-                        loader: "babel-loader",
-                        options: {
-                            configFile: path.join(__dirname, './.babelrc'),
-                            cacheDirectory: true
-                        }
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        configFile: path.join(__dirname, './.babelrc'),
+                        cacheDirectory: true
                     }
-                ]
+                }
             },
             {
                 test: /\.(css|less)$/,
