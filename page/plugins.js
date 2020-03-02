@@ -1,5 +1,5 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HappyPack = require('happypack');
@@ -28,11 +28,11 @@ const devPlugins = [
 // 生产环境plugin配置
 const proPlugins = [
     ...commonPlugins,
-    new UglifyJsPlugin({
-        exclude: /node_modules/,
-        cache: true,
-        parallel: true
-    }),
+    // new UglifyJsPlugin({
+    //     exclude: /node_modules/,
+    //     cache: true,
+    //     parallel: true
+    // }),
 
     new HappyPack({
         id: 'html',
