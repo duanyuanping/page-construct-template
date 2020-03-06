@@ -172,6 +172,7 @@ export default class extends Component {
                   onClick={() => this.handleComponentClick(item.componentName, item.key, item.props)}
                 >
                   <item.componentClass {...item.props} />
+                  <div className="component-mongolia" />
                 </div>
               )
             } else {
